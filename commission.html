@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>约稿流程 - 凡间</title>
+    <title>约稿流程 - 雪特凡</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -14,6 +14,7 @@
             --dark-color: #34495e;
             --text-color: #333;
             --light-text: #fff;
+            --gradient: linear-gradient(135deg, #2c3e50, #4a6491);
         }
         
         * {
@@ -23,27 +24,28 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', 'Microsoft YaHei', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: #f9f9f9;
+            background-image: linear-gradient(to bottom, #f5f7fa, #e4e8f0);
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
         /* 导航栏样式 */
         header {
-            background-color: var(--primary-color);
+            background: var(--gradient);
             color: var(--light-text);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
         
         nav {
@@ -55,6 +57,13 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #3498db;
         }
         
         .nav-links {
@@ -70,10 +79,11 @@
             color: var(--light-text);
             text-decoration: none;
             transition: color 0.3s;
+            font-weight: 500;
         }
         
         .nav-links a:hover {
-            color: var(--secondary-color);
+            color: #3498db;
         }
         
         /* 内容区域样式 */
@@ -84,23 +94,35 @@
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 15px auto;
+            border-radius: 2px;
         }
         
         /* 约稿流程样式 */
         .commission-process {
             background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--secondary-color);
         }
         
         .commission-step {
             display: flex;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
             border-bottom: 1px solid #eee;
         }
         
@@ -114,41 +136,73 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--secondary-color);
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
             color: white;
             border-radius: 50%;
             font-weight: bold;
             margin-right: 1.5rem;
             flex-shrink: 0;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
         .step-content h3 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+        
+        .step-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .step-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .step-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .step-content li:before {
+            content: "•";
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
         }
         
         /* 价格表样式 */
+        .pricing-section {
+            margin: 3rem 0;
+        }
+        
         .pricing-table {
             width: 100%;
             border-collapse: collapse;
             margin: 2rem 0;
             background-color: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
         
         .pricing-table th, .pricing-table td {
-            padding: 1rem;
+            padding: 1.2rem;
             text-align: left;
             border-bottom: 1px solid #eee;
         }
         
         .pricing-table th {
-            background-color: var(--primary-color);
+            background: var(--gradient);
             color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
         
         .pricing-table tr:last-child td {
@@ -156,21 +210,35 @@
         }
         
         .pricing-table tr:hover {
-            background-color: #f5f5f5;
+            background-color: #f8fafc;
+        }
+        
+        .price-highlight {
+            color: #e74c3c;
+            font-weight: bold;
         }
         
         /* 注意事项样式 */
         .notes {
             background-color: #fff8e1;
-            border-left: 4px solid #ffc107;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 4px;
+            border-left: 5px solid #ffc107;
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .notes h3 {
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .notes h3 i {
+            margin-right: 10px;
+            color: #ff9800;
         }
         
         .notes ul {
@@ -178,75 +246,86 @@
         }
         
         .notes li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
         }
         
         /* 按钮样式 */
         .btn {
             display: inline-block;
-            background-color: var(--secondary-color);
+            background: var(--gradient);
             color: var(--light-text);
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
+            padding: 0.9rem 1.8rem;
+            border-radius: 8px;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
         }
         
         .btn:hover {
-            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
         }
         
         .btn-back {
-            background-color: var(--dark-color);
+            background: var(--dark-color);
             margin-top: 2rem;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .btn-back i {
+            margin-right: 8px;
         }
         
         .btn-back:hover {
-            background-color: #2c3e50;
+            background: #2c3e50;
         }
         
-        /* 联系表单样式 */
-        .contact-form {
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .btn-container {
+            text-align: center;
             margin-top: 2rem;
         }
         
-        .form-group {
-            margin-bottom: 1.5rem;
+        /* 联系方式样式 */
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
         
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
+        .contact-method {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
         }
         
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
+        .contact-method:hover {
+            transform: translateY(-5px);
         }
         
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
+        .contact-method i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: var(--secondary-color);
         }
         
         /* 页脚样式 */
         footer {
-            background-color: var(--dark-color);
+            background: var(--gradient);
             color: var(--light-text);
             text-align: center;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             margin-top: 4rem;
         }
         
@@ -268,6 +347,26 @@
             .pricing-table {
                 font-size: 0.9rem;
             }
+            
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-method {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .commission-step, .pricing-table, .notes {
+            animation: fadeIn 0.6s ease-out;
         }
     </style>
 </head>
@@ -276,9 +375,9 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">约稿流程</div>
+                <div class="logo"><i class="fas fa-pen-nib"></i> 雪特凡 · 约稿流程</div>
                 <ul class="nav-links">
-                    <li><a href="index.html">返回主页</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> 返回主页</a></li>
                 </ul>
             </nav>
         </div>
@@ -294,7 +393,13 @@
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>需求沟通</h3>
-                        <p>通过tg或者q群敲我，详细说明您的需求，包括：</p>     
+                        <p>通过 Telegram 或者 QQ 群联系我，详细说明您的需求，包括：</p>
+                        <ul>
+                            <li>故事主题与类型</li>
+                            <li>期望的风格与篇幅</li>
+                            <li>角色设定与背景</li>
+                            <li>其他特殊要求</li>
+                        </ul>
                     </div>
                 </div>
                 
@@ -304,78 +409,99 @@
                         <h3>确认与下单</h3>
                         <p>确认接稿后，您有两种方式下单：</p>
                         <ul>
-                            <li>pixiv站（推荐）</li>
-                            <li>通过邮件，请在邮件正文附上：</li>
-                             <ul>
-                            <li>故事大纲或者想法</li>
-                            <li>期望交付日期</li>
-                            <li>参考资料（如有）</li>
-                            <li>付款方式，不接受任何实名支付手段（例如支付宝微信），敬请理解</li>
-                            <li>其他特别备注（是否独占）</li>
+                            <li><strong>Pixiv 站（推荐）</strong> - 通过 Pixiv 的请求功能提交需求</li>
+                            <li><strong>电子邮件</strong> - 请在邮件正文附上：
+                                <ul>
+                                    <li>故事大纲或者想法</li>
+                                    <li>期望交付日期</li>
+                                    <li>参考资料（如有）</li>
+                                    <li>付款方式，不接受任何实名支付手段（例如支付宝微信），敬请理解</li>
+                                    <li>其他特别备注（是否独占）</li>
+                                </ul>
+                            </li>
                         </ul>
-                        <p>阿凡确认接受后，无需提前支付订金。</p>
+                        <p>确认接受后，无需提前支付订金。</p>
                     </div>
                 </div>
-                  <div class="commission-step">
-                    <div class="step-number">5</div>
+                
+                <div class="commission-step">
+                    <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>完成与交付</h3>
                         <p>作品完成后，我会通知您付款。</p>
-                        <p>确认收到款后，我将在pixiv或者邮件交付作品</p>
-   
+                        <p>确认收到款后，我将在 Pixiv 或者邮件交付作品。</p>
                     </div>
                 </div>
             </div>
             
             <!-- 价格表 -->
-            <h3 style="text-align: center; margin: 3rem 0 1.5rem; color: var(--primary-color);">约稿价格参考</h3>
-            <table class="pricing-table">
-                <thead>
-                    <tr>
-                        <th>作品类型</th>
-                        <th>篇幅</th>
-                        <th>价格范围</th>
-                        <th>预计完成时间</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>非独占</td>
-                        <td>5000-20000字</td>
-                        <td>CNY¥228(邮件交付) / JPY¥5000(pixiv交付)</td>
-                        <td>一个月内，具体根据客户要求而定</td>
-                    </tr>
-                    <tr>
-                        <td>独占</td>
-                        <td>5000-20000字</td>
-                        <td>价格为非独占作品价格*系数（独占月数），系数从2起步，12封顶，视为永久独占</td>
-                        <td>一个月内，具体根据客户要求而定</td>
-                    </tr>
-                    <tr>
-                        <td>特殊</td>
-                        <td>待定</td>
-                        <td>待定</td>
-                        <td>待定</td>
-                    </tr>
-
-                </tbody>
-            </table>
+            <div class="pricing-section">
+                <h3 style="text-align: center; margin: 3rem 0 1.5rem; color: var(--primary-color); font-size: 1.8rem;">约稿价格参考</h3>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>作品类型</th>
+                            <th>篇幅</th>
+                            <th>价格范围</th>
+                            <th>预计完成时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>非独占</td>
+                            <td>5000-20000字</td>
+                            <td class="price-highlight">CNY¥228(邮件交付) / JPY¥5000(Pixiv交付)</td>
+                            <td>一个月内，具体根据客户要求而定</td>
+                        </tr>
+                        <tr>
+                            <td>独占</td>
+                            <td>5000-20000字</td>
+                            <td class="price-highlight">价格为非独占作品价格*系数（独占月数），系数从2起步，12封顶，视为永久独占</td>
+                            <td>一个月内，具体根据客户要求而定</td>
+                        </tr>
+                        <tr>
+                            <td>特殊</td>
+                            <td>待定</td>
+                            <td class="price-highlight">待定</td>
+                            <td>待定</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
             <!-- 注意事项 -->
             <div class="notes">
-                <h3>重要注意事项</h3>
+                <h3><i class="fas fa-exclamation-circle"></i> 重要注意事项</h3>
                 <ul>
                     <li>阿凡会致力交付最理想的作品，交付后不接受修改和退款。有意约稿的书友们，请先看看阿凡的风格你喜不喜欢再约稿～</li>
                     <li>最终作品版权归作者所有</li>
-                    <li>可以接受的交付方式：走pixiv站约稿（推荐）、加密货币usdt、paypal、fansky打赏。阿凡不接受任何实名支付手段，敬请理解。/li>
-                    <li>确定好接稿后，无需支付定金，但是作品完成后需先付款后发货。如果到时候不想要了，阿凡也能理解，我会自行处置。有疑虑者推荐使用p站发送约稿申请。</li>
+                    <li>可以接受的交付方式：走 Pixiv 站约稿（推荐）、加密货币 USDT、PayPal、Fansky 打赏。阿凡不接受任何实名支付手段，敬请理解。</li>
+                    <li>确定好接稿后，无需支付定金，但是作品完成后需先付款后发货。如果到时候不想要了，阿凡也能理解，我会自行处置。有疑虑者推荐使用 Pixiv 发送约稿申请。</li>
                 </ul>
             </div>
             
-           
+            <!-- 联系方式 -->
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fab fa-telegram"></i>
+                    <span>Telegram</span>
+                </div>
+                <div class="contact-method">
+                    <i class="fab fa-qq"></i>
+                    <span>QQ群</span>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <span>电子邮件</span>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Pixiv</span>
+                </div>
+            </div>
             
-            <div style="text-align: center;">
-                <a href="index.html" class="btn btn-back">返回主页</a>
+            <div class="btn-container">
+                <a href="index.html" class="btn btn-back"><i class="fas fa-arrow-left"></i> 返回主页</a>
             </div>
         </div>
     </section>
@@ -387,6 +513,27 @@
         </div>
     </footer>
 
-   
+    <script>
+        // 添加滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.commission-step, .pricing-table, .notes');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
