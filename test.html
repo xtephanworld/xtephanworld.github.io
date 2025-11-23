@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>凡间</title>
+    <title>雪特凡的非凡世界</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
             --light-color: #ecf0f1;
             --dark-color: #34495e;
             --text-color: #333;
@@ -29,6 +29,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: #f9f9f9;
+            overflow-x: hidden;
         }
         
         .container {
@@ -44,8 +45,9 @@
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
             box-shadow: var(--shadow);
+            transition: var(--transition);
         }
         
         nav {
@@ -69,10 +71,7 @@
         .nav-links {
             display: flex;
             list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2rem;
+            gap: 2rem;
         }
         
         .nav-links a {
@@ -80,17 +79,20 @@
             text-decoration: none;
             transition: var(--transition);
             font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
         }
         
         .nav-links a:hover {
             color: var(--secondary-color);
+            background: rgba(255,255,255,0.1);
         }
         
         /* 英雄区域样式 */
         .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
             color: var(--light-text);
-            padding: 5rem 0;
+            padding: 6rem 0;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -114,40 +116,45 @@
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
             opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
         }
         
         .btn {
             display: inline-block;
             background-color: var(--secondary-color);
             color: var(--light-text);
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
             text-decoration: none;
             transition: var(--transition);
-            font-weight: 500;
+            font-weight: 600;
             border: none;
             cursor: pointer;
+            font-size: 1.1rem;
+            animation: fadeInUp 1s ease 0.4s both;
         }
         
         .btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
         
         .btn-outline {
             background-color: transparent;
             border: 2px solid var(--light-text);
+            margin-left: 1rem;
         }
         
         .btn-outline:hover {
@@ -157,13 +164,13 @@
         
         /* 内容区域样式 */
         section {
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
         
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             color: var(--primary-color);
             position: relative;
         }
@@ -174,7 +181,7 @@
             width: 80px;
             height: 4px;
             background: var(--secondary-color);
-            margin: 10px auto;
+            margin: 15px auto;
             border-radius: 2px;
         }
         
@@ -182,19 +189,19 @@
         .about-content {
             display: flex;
             align-items: center;
-            gap: 3rem;
+            gap: 4rem;
         }
         
         .profile-img {
             flex: 1;
-            max-width: 300px;
-            border-radius: 10px;
+            max-width: 350px;
+            border-radius: 15px;
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
         
         .profile-img:hover {
-            transform: scale(1.02);
+            transform: scale(1.05);
         }
         
         .about-text {
@@ -203,61 +210,111 @@
         
         .about-text p {
             margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
         
         /* 系列展示样式 */
         .series-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
         }
         
         .series-card {
             background-color: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             cursor: pointer;
+            border: 1px solid #eee;
         }
         
         .series-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
         
         .series-img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
         }
         
         .series-info {
-            padding: 1.5rem;
+            padding: 2rem;
         }
         
         .series-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
             color: var(--primary-color);
+            font-weight: 600;
         }
         
         .series-count {
             color: #777;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
         }
         
         .series-count i {
-            margin-right: 5px;
+            margin-right: 8px;
             color: var(--secondary-color);
         }
         
         .series-description {
             margin-bottom: 1.5rem;
             color: #555;
+            line-height: 1.6;
+        }
+        
+        /* 作品展示样式 */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .work-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+        
+        .work-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .work-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .work-info {
+            padding: 1.5rem;
+        }
+        
+        .work-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .work-date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
         }
         
         /* 系列详情模态框 */
@@ -268,100 +325,121 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
             overflow-y: auto;
             padding: 20px;
         }
         
         .modal-content {
             background-color: white;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 40px auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             overflow: hidden;
-            animation: modalFade 0.3s;
+            animation: modalFade 0.4s ease;
         }
         
         @keyframes modalFade {
-            from {opacity: 0; transform: translateY(-50px);}
-            to {opacity: 1; transform: translateY(0);}
+            from { opacity: 0; transform: translateY(-50px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .modal-header {
             background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
             color: white;
-            padding: 1.5rem;
+            padding: 2rem;
             position: relative;
         }
         
         .modal-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
         
         .modal-subtitle {
             opacity: 0.9;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         
         .close-modal {
             position: absolute;
-            top: 1rem;
+            top: 1.5rem;
             right: 1.5rem;
-            font-size: 1.5rem;
+            font-size: 2rem;
             cursor: pointer;
             transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
         
         .close-modal:hover {
             color: var(--secondary-color);
+            background: rgba(255,255,255,0.1);
         }
         
         .modal-body {
-            padding: 2rem;
+            padding: 2.5rem;
         }
         
         .books-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
         
         .book-card {
             background-color: #f8f9fa;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             transition: var(--transition);
+            border: 1px solid #e9ecef;
         }
         
         .book-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
         
         .book-cover {
             width: 100%;
-            height: 150px;
+            height: 180px;
             object-fit: cover;
         }
         
         .book-info {
-            padding: 1rem;
+            padding: 1.2rem;
         }
         
         .book-title {
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
             color: var(--primary-color);
+            font-weight: 600;
         }
         
         .book-date {
             color: #777;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
         }
         
         /* 联系我样式 */
@@ -375,21 +453,24 @@
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
             background: white;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            min-width: 250px;
         }
         
         .contact-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         
         .contact-item i {
             color: var(--secondary-color);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
+            width: 30px;
         }
         
         /* 页脚样式 */
@@ -397,35 +478,52 @@
             background-color: var(--dark-color);
             color: var(--light-text);
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
         }
         
         .footer-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
         }
         
         .social-links a {
             color: var(--light-text);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
         }
         
         .social-links a:hover {
             color: var(--secondary-color);
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Pixiv图标样式 */
+        .fa-pixiv:before {
+            content: "P";
+            font-family: Arial, sans-serif;
+            font-weight: bold;
         }
         
         /* 响应式设计 */
         @media (max-width: 768px) {
             .about-content {
                 flex-direction: column;
+                gap: 2rem;
             }
             
             .profile-img {
@@ -437,15 +535,62 @@
             }
             
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
-            .series-grid {
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .series-grid,
+            .works-grid {
                 grid-template-columns: 1fr;
             }
             
             .books-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+            
+            .contact-item {
+                min-width: 100%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        /* 移动端菜单 */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                transform: translateY(-100%);
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
             }
         }
     </style>
@@ -459,12 +604,15 @@
                     <i class="fas fa-pen-nib"></i>
                     <span>凡间</span>
                 </div>
-                <ul class="nav-links">
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#about">关于雪特凡</a></li>
-                    <li><a href="https://www.fansky.net/xtephan">作品购买</a></li>
-                    <li><a href="commission.html">约稿流程</a></li>
+                    <li><a href="#series">作品系列</a></li>
+                    <li><a href="#works">作品购买</a></li>
                     <li><a href="#contact">联系我</a></li>
                 </ul>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
@@ -490,7 +638,10 @@
                     <p>阿凡是一名热爱R18内容的业余作者，专注于各种性癖的创作和思想表达。阿凡希望能通过激情的文字，触动你们的心灵，传递思想与情感。</p>
                     <p>阿凡的创作风格偏向现实主义，擅长描绘人物内心世界和社会现象。多年来，阿凡致力于通过文字探索人性与社会的复杂性。</p>
                     <p>除了写作，阿凡还喜欢窥探他人的生活，欢迎向阿凡揭露你内心最深处的秘密，这些秘密将成为阿凡创作的灵感来源。</p>
-                    <a href="#contact" class="btn btn-outline" style="color: var(--primary-color); border-color: var(--primary-color);">与我联系</a>
+                    <div style="margin-top: 2rem;">
+                        <a href="#contact" class="btn" style="background-color: var(--primary-color);">与我联系</a>
+                        <a href="#series" class="btn btn-outline" style="color: var(--primary-color); border-color: var(--primary-color);">查看作品</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -499,11 +650,25 @@
     <!-- 作品系列 -->
     <section id="series">
         <div class="container">
-            <h2 class="section-title">我的作品</h2>
+            <h2 class="section-title">作品系列</h2>
             <div class="series-grid" id="series-container">
                 <!-- 系列将通过JavaScript动态加载 -->
-        <div style="text-align: center; margin-top: 2rem;">
-                <a href="https://www.pixiv.net/users/44999341" class="btn" target="_blank">作品试阅 (Pixiv)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <section id="works">
+        <div class="container">
+            <h2 class="section-title">作品购买</h2>
+            <div class="works-grid" id="works-container">
+                <!-- 作品将通过JavaScript动态加载 -->
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://www.pixiv.net/users/your_pixiv_id" class="btn" target="_blank" style="background-color: #0096fa;">
+                    <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>
+                    作品试阅 (Pixiv)
+                </a>
             </div>
         </div>
     </section>
@@ -512,48 +677,49 @@
     <section id="contact">
         <div class="container">
             <h2 class="section-title">联系我</h2>
-            
-            </div>
-            
-            <!-- 社交媒体图标 -->
-        <div class="social-links">
-    <a href="#"><i class="fab fa-pixiv"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-telegram"></i></a>
-</div>
-            <div class="social-icons">
-                <a href="https://x.com/clt58707247" class="social-icon x" target="_blank" title="X (Twitter)">
-                    <i class="fab fa-x-twitter"></i>
-                </a>
-                <a href="https://t.me/xtephansan" class="social-icon telegram" target="_blank" title="Telegram">
-                    <i class="fab fa-telegram"></i>
-                </a>
-                <a href="https://github.com/yourprofile" class="social-icon github" target="_blank" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://medium.com/@yourprofile" class="social-icon medium" target="_blank" title="Medium">
-                    <i class="fab fa-medium"></i>
-                </a>
-                <a href="mailto:xtephanomanko@gmail.com" class="social-icon email" title="发送邮件">
+            <div class="contact-info">
+                <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://yourwebsite.com" class="social-icon website" target="_blank" title="个人网站">
-                    <i class="fas fa-globe"></i>
-                </a>
-                <a href="https://www.pixiv.net/users/44999341" class="social-icon pixiv" target="_blank" title="Pixiv">
-                    <i class="fas fa-palette"></i>
-                </a>
+                    <span>邮箱：xtephan@example.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-telegram"></i>
+                    <span>Telegram：@xtephan</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter：@xtephan_world</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord：xtephan#1234</span>
+                </div>
             </div>
         </div>
     </section>
 
-      <!-- 页脚 -->
+    <!-- 页脚 -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 雪特凡. 保留所有权利.</p>
+            <div class="footer-content">
+                <p>&copy; 2025 雪特凡. 保留所有权利.</p>
+                <div class="social-links">
+                    <a href="https://www.pixiv.net/users/your_pixiv_id" target="_blank">
+                        <i class="fa-pixiv"></i>
+                    </a>
+                    <a href="https://twitter.com/xtephan_world" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://t.me/xtephan" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://discord.gg/your_invite" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </footer>
-
 
     <!-- 系列详情模态框 -->
     <div class="modal" id="series-modal">
@@ -564,8 +730,8 @@
                 <span class="close-modal" id="close-modal">&times;</span>
             </div>
             <div class="modal-body">
-                <p id="modal-series-description">系列描述内容</p>
-                <h3 style="margin: 2rem 0 1rem; color: var(--primary-color);">系列书目</h3>
+                <p id="modal-series-description" style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 2rem;"></p>
+                <h3 style="margin: 2rem 0 1.5rem; color: var(--primary-color); font-size: 1.5rem; border-bottom: 2px solid var(--secondary-color); padding-bottom: 0.5rem;">系列书目</h3>
                 <div class="books-grid" id="modal-books-container">
                     <!-- 书目将通过JavaScript动态加载 -->
                 </div>
@@ -574,13 +740,13 @@
     </div>
 
     <script>
-        // 系列数据 - 根据您的需求定制
+        // 完整的系列数据
         const seriesData = [
             {
                 id: 1,
                 title: "逍遥游系列",
                 subtitle: "探索现代都市中的欲望与人性",
-                description: "这个系列聚焦于现代都市生活中的个体欲望体验，通过细腻的笔触描绘城市中的性关系、权力与自由。每部作品都像是一面镜子，反射出我们在欲望都市中的真实面貌。",
+                description: "这个系列聚焦于现代都市生活中的个体欲望体验，通过细腻的笔触描绘城市中的性关系、权力与自由。每部作品都像是一面镜子，反射出我们在欲望都市中的真实面貌。作品探讨了现代人在物质丰富但精神空虚的环境下，如何寻找真实的自我和情感连接。",
                 image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
                 books: [
                     {
@@ -610,7 +776,7 @@
                 id: 2,
                 title: "无惨系列",
                 subtitle: "重口味的情欲探索",
-                description: "这个系列作品探索BDSM、权力交换和边缘性行为等重口味主题。通过极致的情境设置，展现人性在极端状态下的真实反应。每部作品都是一次对传统道德边界的挑战。",
+                description: "这个系列作品探索BDSM、权力交换和边缘性行为等重口味主题。通过极致的情境设置，展现人性在极端状态下的真实反应。每部作品都是一次对传统道德边界的挑战，深入探讨了痛苦与快感、控制与服从之间的复杂关系。",
                 image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
                 books: [
                     {
@@ -640,7 +806,7 @@
                 id: 3,
                 title: "同人系列",
                 subtitle: "二次元角色的情欲演绎",
-                description: "这个系列作品以热门动漫、游戏角色为原型，进行R18向的同人创作。在保留原作角色设定的基础上，探索他们在情欲场景中的不同面貌。",
+                description: "这个系列作品以热门动漫、游戏角色为原型，进行R18向的同人创作。在保留原作角色设定的基础上，探索他们在情欲场景中的不同面貌。每部作品都是对原作角色的深度解读和重新诠释，展现了角色在私密时刻的真实情感。",
                 image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
                 books: [
                     {
@@ -670,7 +836,7 @@
                 id: 4,
                 title: "约稿系列",
                 subtitle: "读者定制的情欲故事",
-                description: "这个系列收录了根据读者要求定制的个性化作品。每个故事都源于真实的欲望幻想，经过艺术加工后成为独特的文学创作。",
+                description: "这个系列收录了根据读者要求定制的个性化作品。每个故事都源于真实的欲望幻想，经过艺术加工后成为独特的文学创作。这些作品展现了读者内心最深处的渴望，同时也反映了当代社会中的各种情感需求和性心理。",
                 image: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
                 books: [
                     {
@@ -698,37 +864,37 @@
             }
         ];
 
-        // 作品数据 - 保持原有的作品展示
+        // 作品数据
         const worksData = [
             {
                 id: 1,
                 title: "逍遥游系列",
                 date: "2025年",
-                description: "阿凡的长篇小说，代表作有《五亿房东李广传》。",
+                description: "阿凡的长篇小说，代表作有《五亿房东李广传》。探索现代都市中的欲望与人性。",
                 image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
                 link: "#"
             },
             {
-                id: 2,
+                   id: 2,
                 title: "无惨系列",
                 date: "2025年",
-                description: "阿凡创作的重口味系列小说，代表作有《女主播系列》。",
+                description: "阿凡创作的重口味系列小说，代表作有《女主播系列》。深入探索BDSM与权力交换。",
                 image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
                 link: "#"
             },
             {
                 id: 3,
                 title: "同人系列",
-                date: "-",
-                description: "敬请期待",
+                date: "2024年",
+                description: "基于热门动漫、游戏角色的R18同人创作，展现二次元角色的情欲面。",
                 image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
                 link: "#"
             },
             {
                 id: 4,
                 title: "约稿系列",
-                date: "-",
-                description: "敬请期待",
+                date: "定制",
+                description: "根据读者需求定制的个性化作品，实现读者的独特欲望幻想。",
                 image: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
                 link: "#"
             }
@@ -751,8 +917,10 @@
                             <i class="fas fa-book"></i>
                             <span>${series.books.length} 部作品</span>
                         </div>
-                        <p class="series-description">${series.description.substring(0, 100)}...</p>
-                        <button class="btn view-series-btn" data-series-id="${series.id}">查看详情</button>
+                        <p class="series-description">${series.description.substring(0, 120)}...</p>
+                        <button class="btn view-series-btn" data-series-id="${series.id}" style="background-color: var(--secondary-color);">
+                            <i class="fas fa-eye" style="margin-right: 8px;"></i>查看详情
+                        </button>
                     </div>
                 `;
                 
@@ -790,8 +958,10 @@
                     <div class="work-info">
                         <h3 class="work-title">${work.title}</h3>
                         <p class="work-date">${work.date}</p>
-                        <p>${work.description}</p>
-                        <a href="${work.link}" class="btn" style="margin-top: 1rem; display: inline-block;">阅读更多</a>
+                        <p style="margin-bottom: 1.5rem;">${work.description}</p>
+                        <a href="${work.link}" class="btn" style="background-color: var(--primary-color);">
+                            <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>购买作品
+                        </a>
                     </div>
                 `;
                 
@@ -822,6 +992,7 @@
                     <div class="book-info">
                         <h4 class="book-title">${book.title}</h4>
                         <p class="book-date">${book.date}</p>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">${book.description}</p>
                     </div>
                 `;
                 
@@ -839,10 +1010,71 @@
             document.body.style.overflow = 'auto'; // 恢复滚动
         }
 
+        // 移动端菜单功能
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    // 切换菜单图标
+                    const icon = this.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.className = 'fas fa-times';
+                    } else {
+                        icon.className = 'fas fa-bars';
+                    }
+                });
+                
+                // 点击链接后关闭菜单
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
+                    });
+                });
+            }
+        }
+
+        // 导航栏滚动效果
+        function initScrollEffects() {
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(44, 62, 80, 0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.background = 'var(--primary-color)';
+                    header.style.backdropFilter = 'none';
+                }
+            });
+        }
+
+        // 平滑滚动导航
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
         // 页面加载完成后执行
         document.addEventListener('DOMContentLoaded', function() {
             loadSeries();
             loadWorks();
+            initMobileMenu();
+            initScrollEffects();
+            initSmoothScroll();
             
             // 关闭模态框事件
             document.getElementById('close-modal').addEventListener('click', closeModal);
@@ -861,96 +1093,47 @@
                 }
             });
             
-            // 平滑滚动导航
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-            
-            // 添加作品卡片样式
-            const style = document.createElement('style');
-            style.textContent = `
-                .works-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-                    gap: 2rem;
-                    margin-bottom: 2rem;
-                }
-                
-                .work-card {
-                    background-color: white;
-                    border-radius: 10px;
-                    overflow: hidden;
-                    box-shadow: var(--shadow);
-                    transition: var(--transition);
-                }
-                
-                .work-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-                }
-                
-                .work-img {
-                    width: 100%;
-                    height: 200px;
-                    object-fit: cover;
-                }
-                
-                .work-info {
-                    padding: 1.5rem;
-                }
-                
-                .work-title {
-                    font-size: 1.2rem;
-                    margin-bottom: 0.5rem;
-                    color: var(--primary-color);
-                }
-                
-                .work-date {
-                    color: #777;
-                    font-size: 0.9rem;
-                    margin-bottom: 1rem;
-                }
-                
-                /* Pixiv图标样式 */
-                .fa-pixiv:before {
-                    content: "P";
-                    font-family: Arial, sans-serif;
-                    font-weight: bold;
-                }
-            `;
-            document.head.appendChild(style);
-        });
-
-        // 添加导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(44, 62, 80, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'var(--primary-color)';
-                header.style.backdropFilter = 'none';
-            }
-        });
-
-        // 添加加载动画
-        window.addEventListener('load', function() {
+            // 添加加载动画
             document.body.style.opacity = '0';
             document.body.style.transition = 'opacity 0.5s ease';
             
             setTimeout(() => {
                 document.body.style.opacity = '1';
             }, 100);
+            
+            // 添加滚动动画
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // 观察所有需要动画的元素
+            document.querySelectorAll('.series-card, .work-card, .about-content').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // 添加视差滚动效果
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
         });
     </script>
 </body>
 </html>
+
