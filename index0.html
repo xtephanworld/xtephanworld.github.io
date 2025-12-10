@@ -153,84 +153,44 @@ nav {
     padding-left: 25px;
 }
 
-/* 作品购买上拉菜单 - 美化版 */
+/* 简洁版上拉菜单 */
 .dropdown-bottom {
     position: relative;
-    display: inline-block;
-}
-
-.dropdown-toggle-bottom {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    position: relative;
-    z-index: 10;
 }
 
 .dropdown-menu-bottom {
     position: absolute;
-    bottom: calc(100% + 15px); /* 在按钮上方15px */
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
-    min-width: 220px;
-    box-shadow: 0 -8px 25px rgba(0,0,0,0.2);
-    border-radius: 12px;
+    bottom: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    background: var(--primary-color);
+    border-radius: 6px;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(-50%) translateY(20px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(10px);
+    transition: all 0.3s ease;
     z-index: 100;
     list-style: none;
-    padding: 15px 0;
-    overflow: hidden;
+    padding: 8px 0;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
 }
 
 .dropdown-bottom:hover .dropdown-menu-bottom {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
-}
-
-.dropdown-menu-bottom::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-}
-
-.dropdown-menu-bottom li {
-    margin: 0;
-    position: relative;
-    overflow: hidden;
+    transform: translateY(0);
 }
 
 .dropdown-menu-bottom a {
     display: block;
-    padding: 14px 30px;
-    color: var(--light-text);
+    padding: 10px 20px;
+    color: white;
     text-decoration: none;
-    transition: all 0.3s ease;
-    text-align: center;
-    font-size: 1.05rem;
-    position: relative;
-    z-index: 1;
+    transition: background 0.3s;
 }
 
 .dropdown-menu-bottom a:hover {
-    background: rgba(255,255,255,0.08);
-    color: var(--secondary-color);
-    padding-left: 35px;
-}
-
-.dropdown-menu-bottom a i {
-    margin-right: 10px;
-    width: 20px;
-    text-align: center;
+    background: rgba(255,255,255,0.1);
 }
 
 /* 添加连接线 */
