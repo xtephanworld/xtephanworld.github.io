@@ -38,70 +38,72 @@
             padding: 0 20px;
         }
         
-        /* 导航栏样式 */
-        header {
-            background-color: var(--primary-color);
-            color: var(--light-text);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            color: var(--secondary-color);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
-        
-        .nav-links a:hover {
-            color: var(--secondary-color);
-            background: rgba(255,255,255,0.1);
-        }
+/* 导航栏样式 */
+header {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
 
-        /* 下拉菜单样式 */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center; /* 确保垂直居中 */
+    height: 100%; /* 确保高度一致 */
+}
+
+.nav-links li {
+    margin-left: 2rem;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    height: 100%; /* 确保高度一致 */
+}
+
+.nav-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    height: 100%; /* 确保高度一致 */
+    padding: 0.5rem 0; /* 上下padding确保点击区域 */
+}
+
+/* 下拉菜单样式 */
 .dropdown {
     position: relative;
+    height: 100%; /* 确保高度一致 */
+    display: flex;
+    align-items: center; /* 垂直居中 */
 }
 
 .dropdown-toggle {
     display: flex;
     align-items: center;
     gap: 5px;
+    height: 100%; /* 确保高度一致 */
 }
 
 .dropdown-toggle i {
     font-size: 0.8rem;
     transition: transform 0.3s ease;
+    margin-left: 5px; /* 图标与文字间距 */
 }
 
 .dropdown:hover .dropdown-toggle i {
@@ -110,7 +112,7 @@
 
 .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: 100%; /* 从父元素底部开始 */
     left: 0;
     background-color: var(--primary-color);
     min-width: 200px;
@@ -123,6 +125,7 @@
     z-index: 1000;
     list-style: none;
     padding: 10px 0;
+    margin-top: 0.5rem; /* 与父元素保持距离 */
 }
 
 .dropdown:hover .dropdown-menu {
@@ -141,17 +144,13 @@
     color: var(--light-text);
     text-decoration: none;
     transition: all 0.3s ease;
+    height: auto; /* 重置高度 */
 }
 
 .dropdown-menu a:hover {
     background-color: rgba(255,255,255,0.1);
     color: var(--secondary-color);
     padding-left: 25px;
-}
-
-/* 确保导航栏有足够的z-index */
-header {
-    z-index: 1000;
 }
 
         
