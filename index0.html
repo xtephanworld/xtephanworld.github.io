@@ -153,7 +153,97 @@ nav {
     padding-left: 25px;
 }
 
-        
+/* 作品购买上拉菜单 - 美化版 */
+.dropdown-bottom {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle-bottom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
+    z-index: 10;
+}
+
+.dropdown-menu-bottom {
+    position: absolute;
+    bottom: calc(100% + 15px); /* 在按钮上方15px */
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+    min-width: 220px;
+    box-shadow: 0 -8px 25px rgba(0,0,0,0.2);
+    border-radius: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 100;
+    list-style: none;
+    padding: 15px 0;
+    overflow: hidden;
+}
+
+.dropdown-bottom:hover .dropdown-menu-bottom {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu-bottom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+}
+
+.dropdown-menu-bottom li {
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.dropdown-menu-bottom a {
+    display: block;
+    padding: 14px 30px;
+    color: var(--light-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 1.05rem;
+    position: relative;
+    z-index: 1;
+}
+
+.dropdown-menu-bottom a:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--secondary-color);
+    padding-left: 35px;
+}
+
+.dropdown-menu-bottom a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* 添加连接线 */
+.dropdown-menu-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 15px;
+    background: linear-gradient(to top, var(--secondary-color), transparent);
+}
         /* 英雄区域样式 */
         .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
@@ -675,7 +765,7 @@ nav {
                         <li><a href="https://www.fansky.net/xtephan" target="_blank">Fansky</a></li>
                         <li><a href="https://app.unifans.io/c/xtephan" target="_blank">引力圈</a></li>
                         <li><a href="https://www.penana.com/user/228990/%E9%9B%AA%E7%89%B9%E5%87%A1/portfolio" target="_blank">Penana</a></li>
-                        <li><a href="#contact">敬请期待</a></li>
+                        
                     </ul>
                 </li>
                 <li><a href="#contact">约稿流程</a></li>
@@ -722,24 +812,30 @@ nav {
         </div>
     </section>
 
-    <!-- 作品展示 -->
-    <section id="works">
-              <div style="text-align: center; margin-top: 3rem;">
-                <a href="https://www.pixiv.net/users/44999341" class="btn" target="_blank" style="background-color: #0096fa;">
-                    <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>
-                    作品试阅 (Pixiv)
+<!-- 作品展示 -->
+<section id="works">
+    <div class="container">
+        <h2 class="section-title">我的作品</h2>
+        <div class="works-grid" id="works-container">
+            <!-- 作品将通过JavaScript动态加载 -->
+        </div>
+        <div style="text-align: center; margin-top: 3rem; position: relative;">
+            <div class="dropdown-bottom">
+                <a href="#" class="btn dropdown-toggle-bottom" style="background-color: #0096fa;">
+                    <i class="fas fa-shopping-cart" style="margin-right: 8px;"></i>
+                    作品购买 <i class="fas fa-chevron-up" style="margin-left: 8px;"></i>
                 </a>
-                  <a href="https://www.fansky.net/xtephan" class="btn" target="_blank" style="background-color: #0096fa;">
-                    <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>
-                    作品购买 (Fansky)
-                </a>
-                   <a href="commission.html" class="btn" target="_blank" style="background-color: #0096fa;">
-                    <i class="fas fa-external-link-alt" style="margin-right: 8px;"></i>
-                    约稿流程
-                </a>
+                <ul class="dropdown-menu-bottom">
+                    <li><a href="#works">所有作品</a></li>
+                    <li><a href="#series">作品系列</a></li>
+                    <li><a href="https://www.pixiv.net/users/your_pixiv_id" target="_blank">Pixiv作品</a></li>
+                    <li><a href="#contact">定制约稿</a></li>
+                    <li><a href="#contact">约稿流程</a></li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     <!-- 页脚 -->
     <footer>
         <div class="container">
